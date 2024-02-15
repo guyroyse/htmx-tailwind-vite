@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title>HTMX + Tailwind + Vite Project</title>
+  <script defer type="module" src="app.js"></script>
+  <!-- <script defer type="module" src="json-enc.js"></script>
+  <script defer type="module" src="client-side-templates.js"></script> -->
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body hx-ext="client-side-templates">
+
+  <h1 class="bg-red-200 text-gray-800 text-3xl p-4">Hello World</h1>
+
+  <button
+    hx-get="/hello.json" hx-target="#greeting" hx-swap="outerHTML" hx-ext="json-enc" handlebars-template="greeting-template"
+    class="p-2 m-2 bg-slate-500 text-white rounded-lg"
+    type="submit">Click for Hello</button>
+
+  <p id="greeting" class="hidden"></p>
+
+  <template id="greeting-template">
+    <h2 class="text-xl p-4 bg-slate-100">Your message is: <span class="text-red-400">{{message}}</span></h2>
+  </template>
+
+</body>
+
+</html>
